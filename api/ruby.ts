@@ -74,6 +74,7 @@ module.exports = allowCors(async (req: VercelRequest, res: VercelResponse) => {
         }),
     ])
         .then((result) => {
+            res.setHeader('Cache-Control', 's-maxage=86400');
             res.setHeader('content-type', 'application/json')
             // res.setHeader("content-type", "text/html");
             res.status(200).send(result)
